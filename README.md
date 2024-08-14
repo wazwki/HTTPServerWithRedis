@@ -6,11 +6,11 @@
 ### Step 1:
 #### Install and import client for connect to Redis:
 ```bash
-go get github.com/go-redis/redis/v9
+go get github.com/redis/go-redis/v9
 ```
 ```go
 import (
-    "github.com/go-redis/redis/v9"
+    "github.com/redis/go-redis/v9"
 )
 ```
 
@@ -71,50 +71,4 @@ err = rdb.Expire(ctx, "myKey", 10*time.Second).Err()
 if err != nil {
     panic(err)
 }
-```
-
-
-## Redis for in-memory storage: 
-
-### Step 1:
-//
-```go
-```
-
-### Step 2:
-//
-```go
-```
-
-### Step 3:
-//
-```go
-```
-
-### Step 4:
-//
-```go
-```
-
-
-## Redis for cache: 
-
-### Step 1:
-//
-```go
-```
-
-### Step 2:
-//
-```go
-```
-
-### Step 3:
-//
-```go
-```
-
-### Step 4:
-//
-```go
 ```
