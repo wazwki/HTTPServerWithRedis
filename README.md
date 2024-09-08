@@ -1,21 +1,19 @@
-# How to config redis for in-memory storage or cache in golang HTTP-server
+# **How to Set Up Redis in a Golang HTTP Server**
 
+# **1. Install and Import the Redis Client:**
 
-## Redis config: 
-
-### Step 1:
-#### Install and import client for connect to Redis:
 ```bash
 go get github.com/redis/go-redis/v9
 ```
+
 ```go
 import (
     "github.com/redis/go-redis/v9"
 )
 ```
 
-### Step 2:
-#### Create connect object with options:
+# **2. Create a Connection Object with Parameters:**
+
 ```go
 rdb := redis.NewClient(&redis.Options{
     Addr:     "localhost:6379",
@@ -24,17 +22,19 @@ rdb := redis.NewClient(&redis.Options{
 })
 ```
 
-### Step 3:
-#### Using connect object methods:
+# **3. Using Connection Object Methods:**
 
-#### Set: Sets the value for the key.
+## 3.1. Set: Sets the value of a key.
+
 ```go
 err := rdb.Set(ctx, "myKey", "Hello, Redis!", 0).Err()
 if err != nil {
     panic(err)
 }
 ```
-#### Get: Retrieves the value of a key.
+
+## 3.2. Get: Retrieves the value of a key.
+
 ```go
 val, err := rdb.Get(ctx, "myKey").Result()
 if err != nil {
@@ -42,7 +42,8 @@ if err != nil {
 }
 ```
 
-#### Del: Deletes a key.
+## 3.3. Del: Deletes a key.
+
 ```go
 err = rdb.Del(ctx, "myKey").Err()
 if err != nil {
@@ -50,7 +51,7 @@ if err != nil {
 }
 ```
 
-#### Exists: Checks for the presence of a key.
+## 3.4. Exists: Checks the existence of a key.
 
 ```go
 exists, err := rdb.Exists(ctx, "myKey").Result()
@@ -64,7 +65,7 @@ if exists == 1 {
 }
 ```
 
-#### Expire: Sets the lifetime for the key.
+## 3.5. Expire: Sets the expiration time for a key.
 
 ```go
 err = rdb.Expire(ctx, "myKey", 10*time.Second).Err()
